@@ -1,0 +1,34 @@
+En este ejemplo se va a desplegar el .war en un servidor tomcat corriendo en un contenedor.
+
+El primer paso, antes de generar el war, será actualizar los datos de conexión a la bbdd en el archivo application.properties
+del proyecto java, sabiendo que dicha bbdd estará desplegada en otro contenedor que, en este caso, va a pertenecer a la misma red docker
+ que el contenedor de la parte back.
+Por lo tanto, se puede referenciar a través del nombre del contenedor de la bbdd.
+
+Es posible, que al hacer una petición rest, el servidor no devuelva los datos por 
+problema de CORS. Esto se produce cuando una petición se está haciendo desde un dominio
+diferente al servidor que recibe la misma.
+Una opción rápida y sencilla para solventar este error es añadir cabecera cors en la petición y,
+en el lado servidor, indicar los orígenes desde los que se permite cada petición.
+En el proyecto java "colegio" se ha añadido en la clase ColegioApplication y en AlumnoRestController,
+permitiendo peticiones desde cualquier origen. Lo suyo es restringir esas peticiones e indicar los dominios
+exactos desde los que se pueden realizar.
+
+Otra circunstancia que se puede dar es que, al estar la bbdd alojada en un contenedor, maven
+no genere el .war por error en los test. Esto se soluciona incluyendo en pom.xml lo siguiente:
+
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-surefire-plugin</artifactId>
+	<version>3.0.0-M1</version>
+	<configuration>
+	    <skipTests>true</skipTests>
+	</configuration>
+</plugin>
+
+En el rar colegioSpring se incluye la carpeta src y el pom.xml del proyecto que se
+ha desplegado en este ejemplo, para pode rver los cambios realizados.
+
+
+
+
