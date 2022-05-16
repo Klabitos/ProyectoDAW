@@ -28,7 +28,7 @@ Después, para entrar en ese contenedor:
 Nos pedirá una contraseña, que será 123456. (En caso de fallar, esperar 1 minuto y volver a intentar). Ahora crearemos un usuario escribiendo tres comandos:
 
 create user 'mysqluser' identified by 'secret';
-GRANT ALL PRIVILEGES ON *.* TO 'mysqluser'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'mysqluser'@'%';  (Por fallos de visualización no se ve correctamente: asterisco.asterisco)
 exit;
 
 Ahora que tenemos desplegada la base de datos de manera correcta seguimos con el back:
