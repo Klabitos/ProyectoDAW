@@ -15,7 +15,7 @@ Los nombres de las 3 imágenes que necesitaremos son:
 
 Comenzaremos creando una red donde desplegaremos los contenedores, para ello desde nuestro terminal docker ejecutaremos lo siguiente:
 
-**docker create network appmeteown** 
+**docker network create appmeteown** 
 
 Para ejecutar nuestra imagen de la base de datos:
 
